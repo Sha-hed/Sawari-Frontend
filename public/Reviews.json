@@ -1,0 +1,38 @@
+[
+    {
+        "review": "Had an excellent experience at Sawari Bike Shop. The staff are friendl…",
+        "image": "https://example.com/images/review5.jpg",
+        "name": "Shariar Ahmed",
+        "address": "Mirpur, Dhaka, Bangladesh"
+    },
+    {
+        "review": "Great experience at Sawari Bike Shop! The bike selection is top-notch,…",
+        "image": "https://example.com/images/review3.jpg",
+        "name": "Tanim Rahman",
+        "address": "Sylhet, Bangladesh"
+    },
+    {
+        "review": "I’ve purchased bikes from several shops, but Sawari Bike Shop is by fa…",
+        "image": "https://example.com/images/review6.jpg",
+        "name": "Hossain Ahmed",
+        "address": "Uttara, Dhaka, Bangladesh"
+    },
+    {
+        "review": "Sawari Bike Shop has an incredible collection of bikes. Their customer…",
+        "image": "https://example.com/images/review1.jpg",
+        "name": "Musharrof Hossain",
+        "address": "Gazipur, Dhaka, Bangladesh"
+    },
+    {
+        "review": "I recently visited Sawari Bike Shop, and I must say I’m impressed with…",
+        "image": "https://example.com/images/review2.jpg",
+        "name": "Taijul Islam",
+        "address": "Chadpur, Dhaka, Bangladesh"
+    },
+    {
+        "review": "Sawari Bike Shop is my go-to place for all things related to bikes. Th…",
+        "image": "https://example.com/images/review4.jpg",
+        "name": "Badsha Sarkar",
+        "address": "New Market, Chattogram, Bangladesh"
+    }
+]
