@@ -1,6 +1,6 @@
 import { useLocation } from "react-router-dom";
 import { useGetSingleBikeQuery } from "../../redux/feature/bikes/bikeApi";
-import {  useState } from "react";
+import { useState } from "react";
 import { useAppSelector } from "../../redux/hooks";
 import { getCurrentUser } from "../../redux/feature/auth/auth.slice";
 import toast from "react-hot-toast";
@@ -9,10 +9,12 @@ import { useAddOrderMutation } from "../../redux/feature/orders/orderApi";
 import { TUser } from "../Dashboard/User/user.types";
 
 const CheckOut = () => {
-
   const [orderQuantity, setOrderQuantity] = useState(1);
-  const user : TUser | null = useAppSelector(getCurrentUser);
+
+  const user: TUser | null = useAppSelector(getCurrentUser);
+
   const location = useLocation();
+  
   const id = location.state.id;
   const { data, isLoading } = useGetSingleBikeQuery(id);
   const [addOrder] = useAddOrderMutation();
@@ -23,13 +25,15 @@ const CheckOut = () => {
   //   setBikePrice(Number(quan) * price);
   // };
 
-  const handlePayment =async (e: FieldValues) => {
+  const handlePayment = async (e: FieldValues) => {
+
     e.preventDefault();
     if (orderQuantity > quantity) {
       return toast.error(
         `Only ${quantity} bikes are available, you cant order more than that`
       );
     }
+
     const order = {
       name: user?.name,
       email: user?.email,
@@ -38,14 +42,20 @@ const CheckOut = () => {
       totalPrice: bikePrice,
     };
     const placeOrder = await addOrder(order);
-    const checkoutUrl = placeOrder?.data?.data?.payment?.checkout_url; 
+    console.log(placeOrder);
+    const checkoutUrl = placeOrder?.data?.data?.payment?.checkout_url;
     window.location.href = checkoutUrl;
     // console.log(placeOrder.data.data.payment.checkout_url);
     console.log("Order Quantity and Price", orderQuantity, bikePrice);
-
   };
 
-  if (isLoading) return <p>Loading...</p>;
+  if (isLoading) {
+    return (
+      <div className="w-full min-h-screen flex justify-center items-center">
+        <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin dark:border-teal-600"></div>
+      </div>
+    );
+  }
 
   return (
     <div className="max-w-7xl mx-auto py-5">

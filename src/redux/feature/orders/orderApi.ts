@@ -28,19 +28,26 @@ const orderApi2 = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     updateStatus: builder.mutation({
       query: (updateInfo) => ({
-        url: 'orders/updateStatus', // ✅ Pass 'id' as a parameter
+        url: "orders/updateStatus", // ✅ Pass 'id' as a parameter
         method: "POST",
         body: updateInfo, // ✅ Send the update data in the request body
       }),
     }),
   }),
 });
+const orderApi3 = baseApi.injectEndpoints({
+  endpoints: (builder) => ({
+    verifyOrder: builder.query({
+      query: (orderId) => ({
+        url: `orders?order_id=${orderId}`,
+        method: "GET",
+      }),
+    }),
+  }),
+});
 
-export const {
-  useAddOrderMutation,
-  useGetOrderQuery,
-  useGetAllOrderQuery
-} = OrderApi;
+export const { useAddOrderMutation, useGetOrderQuery, useGetAllOrderQuery } =
+  OrderApi;
 
-
-export const { useUpdateStatusMutation } = orderApi2
+export const { useUpdateStatusMutation } = orderApi2;
+export const { useVerifyOrderQuery } = orderApi3;

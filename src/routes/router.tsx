@@ -18,6 +18,7 @@ import PasswordChange from "../pages/Dashboard/User/PasswordChange";
 import UserDashboard from "../pages/Dashboard/User/UserDashboard";
 import ProtectedFace2 from "../components/layout/ProtectedFace2";
 import EditBike from "../pages/Dashboard/Admin/EditBike";
+import OrderSummary from "../pages/CheckOutPage/OrderSummary";
 
 const router = createBrowserRouter([
   {
@@ -46,7 +47,19 @@ const router = createBrowserRouter([
       },
       {
         path: "/bikeDetails",
-        element: <BikeDetailsPage />,
+        element: (
+          <ProtectedRoutes>
+            <BikeDetailsPage />
+          </ProtectedRoutes>
+        ),
+      },
+      {
+        path: "/orderSummary",
+        element: (
+          <ProtectedRoutes>
+            <OrderSummary />
+          </ProtectedRoutes>
+        ),
       },
       {
         path: "/checkOut",

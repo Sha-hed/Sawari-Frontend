@@ -11,8 +11,6 @@ import { CiViewTimeline } from "react-icons/ci";
 import { RiLockPasswordLine } from "react-icons/ri";
 import { TUser } from "./user.types";
 const UserDashboard = () => {
-
-
   const user: TUser | null = useAppSelector(getCurrentUser);
 
   const { isLoading } = useGetOrderQuery({ email: user?.email });

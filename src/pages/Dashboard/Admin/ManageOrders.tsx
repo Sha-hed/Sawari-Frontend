@@ -4,11 +4,10 @@ import {
   useGetAllOrderQuery,
   useUpdateStatusMutation,
 } from "../../../redux/feature/orders/orderApi";
+import toast from "react-hot-toast";
 
 const ManageOrders = () => {
-
-
-  const [status, setStatus] = useState("Pending");
+  const [status, setStatus] = useState("");
 
   const { data, isLoading, refetch } = useGetAllOrderQuery(undefined);
   const [updateStatus] = useUpdateStatusMutation();
@@ -22,7 +21,10 @@ const ManageOrders = () => {
     );
   }
 
-  const handleUpdate = async (id:string) => {
+  const handleUpdate = async (id: string) => {
+    if (!status) {
+      return toast.error("Please choose a status");
+    }
     const updatedInfo = await updateStatus({ id, status });
     refetch();
     console.log("UPdated info ", updatedInfo);
@@ -48,7 +50,7 @@ const ManageOrders = () => {
             </tr>
           </thead>
           <tbody className="border-b bg-gray-50 border-gray-300 text-center">
-            {data?.data?.map((bike:any, id:string) => (
+            {data?.data?.map((bike: any, id: string) => (
               <tr className="border-2 py-1 space-y-2" key={id}>
                 <td>{id + 1}</td>
                 <td>{bike?.email}</td>
@@ -70,11 +72,12 @@ const ManageOrders = () => {
                 <td className="border outline-none w-[100px]">
                   <form></form>
                   <select
-                    value={status}
+                    // value={bike?.transaction?.bank_status}
                     onChange={(e) => setStatus(e.target.value)} // Updates the state
-                    className="p-2"
+                    className="p-2 text-center"
                     id=""
                   >
+                    <option value="">Select Status</option>
                     <option value="Pending">Pending</option>
                     <option value="Failed">Failed</option>
                     <option value="Success">Success</option>
