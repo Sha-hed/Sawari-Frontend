@@ -47,11 +47,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/bikeDetails",
-        element: (
-          <ProtectedRoutes>
-            <BikeDetailsPage />
-          </ProtectedRoutes>
-        ),
+        element: <BikeDetailsPage />,
       },
       {
         path: "/orderSummary",
